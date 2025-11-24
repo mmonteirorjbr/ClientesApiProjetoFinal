@@ -1,0 +1,32 @@
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: clientes-db
+    environment:
+      POSTGRES_DB: clientes_db
+      POSTGRES_USER: clientes_user
+      POSTGRES_PASSWORD: clientes_pass
+    ports:
+      - "5435:5432"
+    volumes:
+      - clientes_postgres_data:/var/lib/postgresql/data
+    networks:
+      - clientes-network
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: clientes-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - clientes-network
+
+volumes:
+  clientes_postgres_data:
+
+networks:
+  clientes-network:
+    driver: bridge
+
