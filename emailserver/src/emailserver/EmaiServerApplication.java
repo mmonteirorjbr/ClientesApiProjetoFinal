@@ -1,0 +1,14 @@
+package emailserver;
+
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+
+public class EmaiServerApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(EmailServerApplication.class, args);
+	}
+
+}
