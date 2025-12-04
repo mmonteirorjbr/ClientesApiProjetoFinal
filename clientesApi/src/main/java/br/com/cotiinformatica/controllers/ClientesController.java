@@ -6,6 +6,7 @@ import br.com.cotiinformatica.interfaces.ClienteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +17,12 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/clientes")
 @Tag(name = "Clientes", description = "Endpoints para gerenciamento de Clientes.")
+@RequiredArgsConstructor
 public class ClientesController {
 
     @Autowired
     ClienteService clienteService;
-	
+
     @PostMapping(consumes = "application/json")
     @Operation(summary = "Inserir um Cliente", description = "Endpoint para inserir um novo Cliente.")
     public ResponseEntity<ClienteResponse> post(
