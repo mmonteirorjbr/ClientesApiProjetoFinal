@@ -10,14 +10,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.cotiinformatica.events.ClienteCadastrado;
 
-@Component
+/*@Component
 public class RabbitMQConsumer {
 	
 	@Autowired ObjectMapper objectMapper;
 
-	/*
+	*//*
 	 * Método para ler a fila constantemente
-	 */
+	 *//*
 	@RabbitListener(queues = "clientes")
 	public void receive(@Payload String payload) {
 		
@@ -38,7 +38,7 @@ public class RabbitMQConsumer {
 			e.printStackTrace();
 		}
 	}
-}
+}*/
 
 
 

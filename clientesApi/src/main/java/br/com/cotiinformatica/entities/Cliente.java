@@ -29,9 +29,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-
-
-public class Cliente<Endereco> {
+public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
@@ -52,10 +50,8 @@ public class Cliente<Endereco> {
 	private Date dataNascimento;
 	
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Endereco> enderecos = new ArrayList<>();
+	private List<Endereco> enderecos;
 
-
-		
-	}
+}
 
 

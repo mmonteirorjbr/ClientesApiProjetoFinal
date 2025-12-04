@@ -17,6 +17,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -32,8 +34,6 @@ import java.util.regex.*;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-
-
 public class Endereco {
 
 	
@@ -41,37 +41,34 @@ public class Endereco {
 	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(updatable = false)
 	private UUID id;
-	
-	@Column(nullable = false, length = 100)
-	private String nome;
-	
-	@Column(nullable = false, length = 50 , unique = true)
-	private String email;
-	
-	@Column(nullable = false, length = 11)
-	private String cpf;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = false)
-	private Date dataNascimento;
-	
-	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Endereco> enderecos = new ArrayList<>();
 
+	@NotNull
+	@Size(min = 8, max = 255, message = "Logradouro deve ter entre 8 e 255 caracteres.")
 	private String logradouro;
-	private String complemento;  
-	private String numero;
-	private String bairro;
-	private String cidade;
-	private String uf;
-	private String cep;
-	
-    @ManyToOne
-    @JoinColumn(name="cliente_id")
-    private Cliente cliente;
 
-	
-	}
+	private String complemento;
+
+	@NotNull
+	@Size(min = 1, max = 10, message = "O Número deve ter entre 1 e 10 caracteres.")
+	private String numero;
+
+	@NotNull
+	private String bairro;
+
+	@NotNull
+	private String cidade;
+
+	@NotNull
+	private String uf;
+
+	@NotNull
+	private String cep;
+
+	@ManyToOne
+	@JoinColumn(name="cliente_id", nullable = false)
+	private Cliente cliente;
+
+}
 
 
 

@@ -11,7 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import br.com.cotiinformatica.components.RabbitMQProducer;
+//import br.com.cotiinformatica.components.RabbitMQProducer;
 import br.com.cotiinformatica.dtos.ClienteRequest;
 import br.com.cotiinformatica.dtos.ClienteResponse;
 import br.com.cotiinformatica.entities.Cliente;
@@ -24,7 +24,7 @@ import br.com.cotiinformatica.repositories.ClienteRepository;
 public class ClienteServiceImpl implements ClienteService {
 
 	@Autowired ClienteRepository ClienteRepository;
-	@Autowired RabbitMQProducer rabbitMQProducer;
+	//@Autowired RabbitMQProducer rabbitMQProducer;
 	
 	@Override
 	public ClienteResponse criar(ClienteRequest request) {
@@ -37,7 +37,7 @@ public class ClienteServiceImpl implements ClienteService {
 		
 		var ClienteCadastrado = mapper.map(Cliente, ClienteCadastrado.class);
 		
-		rabbitMQProducer.send(ClienteCadastrado);
+		//rabbitMQProducer.send(ClienteCadastrado);
 		
 		return mapper.map(Cliente, ClienteResponse.class);
 	}
