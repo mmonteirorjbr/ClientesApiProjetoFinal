@@ -9,16 +9,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.cotiinformatica.events.ClienteCadastrado;
 
-@Component
+/*@Component
 public class RabbitMQProducer {
 
 	@Autowired RabbitTemplate rabbitTemplate;
 	@Autowired ObjectMapper objectMapper;
 	@Autowired Queue queue;
 	
-	/*
+	*//*
 	 * Método para gravar um pedido criado na fila
-	 */
+	 *//*
 	public void send(ClienteCadastrado clienteCadastrado) {
 		try {
 			var json = objectMapper.writeValueAsString(clienteCadastrado); //serializando
@@ -28,5 +28,5 @@ public class RabbitMQProducer {
 			e.printStackTrace();
 		}
 	}
-}
+}*/
 
