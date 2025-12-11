@@ -3,6 +3,7 @@ package br.com.cotiinformatica.configurations;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.Contact;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,14 +11,21 @@ import org.springframework.context.annotation.Configuration;
 public class SwaggerConfiguration {
     
     @Bean
-    public OpenAPI customOpenApi() {
-        return new OpenAPI().components(new Components()).info(
-                new Info()
+    public OpenAPI customOpenAPI() {
+		return new OpenAPI()
+				.info(new Info()
                         .title("API Cliente")
-                        .description("Projeto Final")
-        );
+                        .version("v1")
+        				.description("Documentação da API do projeto")
+        				.description("Projeto Final - Documentacao da API Cliente")
+        				.contact(new Contact()
+                    	.name("Marcelo Monteiro")
+        				.email("marcelo.monteiro@sgp.uerj.br")));
+    }
+
+        
 
     }
 
-}
+
 
